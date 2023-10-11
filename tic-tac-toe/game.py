@@ -1,5 +1,5 @@
 import time
-from player import RandomComPlayer, HumanPlayer
+from player import RandomComPlayer, HumanPlayer, SmartComPlayer
 
 class TicTacToe:
     def __init__(self):
@@ -103,7 +103,7 @@ class TicTacToe:
 
 if __name__ == '__main__':
     x_player = HumanPlayer('X')
-    o_player = HumanPlayer('O')
+    o_player = SmartComPlayer('O')
     game = TicTacToe()
     game.play(x_player,o_player)
     
