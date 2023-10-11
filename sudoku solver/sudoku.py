@@ -30,6 +30,25 @@ def is_valid(puzzle, guess, row, col):
     # if valid
     return True
     
+def print_puzzle(puzzle):
+    ind_row = 0
+    for row in puzzle:
+        row_puzzle = " "
+        ind_col = 0
+        for col in row:
+            row_puzzle += " " if col == -1 else str(col)
+            if ind_col in [2, 5]:
+                row_puzzle += '\033[1m' + ' | ' + '\033[0m'
+            elif ind_col != len(row)-1:
+                row_puzzle += ' | '
+            ind_col += 1
+        print(row_puzzle)
+        printed_dash = "".join(["-" for _ in range(len(row_puzzle)-15)])
+        if ind_row in [2,5]:
+            printed_dash = '\033[1m' + printed_dash + '\033[0m'
+        print(printed_dash) if ind_row != len(puzzle)-1 else None
+        ind_row += 1
+
 
 
 def solve_sudoku(puzzle):
@@ -69,9 +88,10 @@ if __name__ == '__main__':
         [-1, -1, -1, -1, -1, -1, -1, 7, 1]
     ]
 
-    print(solve_sudoku(example_puzzle))
-    print(example_puzzle)
-
-
-
-
+    print()
+    print("before solved\n".upper())
+    print_puzzle(example_puzzle)
+    solve_sudoku(example_puzzle)
+    print("\nafter solved\n".upper())
+    print_puzzle(example_puzzle)
+    print()
