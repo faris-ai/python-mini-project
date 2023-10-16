@@ -1,4 +1,4 @@
-import turtle, random, time
+import turtle, random, time, winsound
 
 game = turtle.Screen()
 game.title("Pong Game")
@@ -106,10 +106,12 @@ while running:
     if ball.ycor() > 290:
         ball.sety(290)
         ball.dy = -ball.dy
+        winsound.PlaySound("bounce.wav",winsound.SND_ASYNC)
     
     if ball.ycor() < -285:
         ball.sety(-285)
         ball.dy = -ball.dy
+        winsound.PlaySound("bounce.wav",winsound.SND_ASYNC)
 
     if ball.xcor() > 380:
         ball.goto(0,0)
@@ -127,8 +129,10 @@ while running:
     if (ball.xcor() > 350 and ball.xcor() < 370) and (ball.ycor()<paddle_b.ycor()+paddle_offset and ball.ycor()>paddle_b.ycor()-paddle_offset):
         ball.setx(330)
         ball.dx=-ball.dx
+        winsound.PlaySound("bounce.wav",winsound.SND_ASYNC)
+
 
     if (ball.xcor() < -350 and ball.xcor() > -370) and (ball.ycor()<paddle_a.ycor()+paddle_offset and ball.ycor()>paddle_a.ycor()-paddle_offset):
         ball.setx(-330)
         ball.dx=-ball.dx
-
+        winsound.PlaySound("bounce.wav",winsound.SND_ASYNC)
