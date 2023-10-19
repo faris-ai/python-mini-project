@@ -1,6 +1,10 @@
 import pygame, random
 import tkinter as tk
 from tkinter import messagebox
+from sys import exit
+
+pygame.init()
+pygame.mixer.init()
 
 side_length = 700
 row = 20
@@ -47,6 +51,7 @@ class Snake(object):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
+                exit()
 
             can_back_trun = True
 
@@ -128,8 +133,8 @@ def drawGrid(surface):
         x = x + size_btwn
         y = y + size_btwn
 
-        pygame.draw.line(surface, 'white', (x, 0), (x, side_length))
-        pygame.draw.line(surface, 'white', (0, y), (side_length, y))
+        pygame.draw.line(surface, (15,15,15), (x, 0), (x, side_length))
+        pygame.draw.line(surface, (15,15,15), (0, y), (side_length, y))
 
 def randomSnack(item):
     positions = item.body
@@ -154,7 +159,7 @@ def messageBox(subject, content):
     except:
         pass
 
-snake = Snake('red', (10,10))
+snake = Snake('red', (row//2,row//2))
 snack = Cube(randomSnack(snake), color='yellow')
 
 def refreshGame(surface):
@@ -169,17 +174,13 @@ def main():
     game = pygame.display.set_mode((side_length,side_length))
     
     clock = pygame.time.Clock()
-
-    running = True
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-
+    bite = pygame.mixer.Sound('snake game/bite.ogg')
+    while True:
         pygame.time.delay(50)
         clock.tick(10)
         snake.move()
         if snake.body[0].pos == snack.pos:
+            pygame.mixer.Sound.play(bite)
             snake.addCube()
             snack = Cube(randomSnack(snake), color='yellow')
         
@@ -187,7 +188,7 @@ def main():
             if snake.body[x].pos in list(map(lambda z:z.pos, snake.body[x+1:])):
                 print()
                 messageBox("Game Over".upper(), f"Your score: {len(snake.body)}")
-                snake.reset((10,10))
+                snake.reset((row//2,row//2))
                 break
 
         refreshGame(game)
