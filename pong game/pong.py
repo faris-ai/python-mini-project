@@ -1,4 +1,5 @@
 import turtle, random, time, winsound
+from sys import exit
 
 game = turtle.Screen()
 game.title("Pong Game")
@@ -98,9 +99,12 @@ while running:
 
     time.sleep(1/60)
 
-    # move the ball
-    ball.sety(ball.ycor() + ball.dy)
-    ball.setx(ball.xcor() + ball.dx)
+    try:
+        # move the ball
+        ball.sety(ball.ycor() + ball.dy)
+        ball.setx(ball.xcor() + ball.dx)
+    except:
+        exit()
 
     # border checking
     if ball.ycor() > 290:
@@ -127,12 +131,12 @@ while running:
 
     # Check paddle and ball collisions
     if (ball.xcor() > 350 and ball.xcor() < 370) and (ball.ycor()<paddle_b.ycor()+paddle_offset and ball.ycor()>paddle_b.ycor()-paddle_offset):
-        ball.setx(330)
+        ball.setx(350)
         ball.dx=-ball.dx
         winsound.PlaySound("bounce.wav",winsound.SND_ASYNC)
 
 
     if (ball.xcor() < -350 and ball.xcor() > -370) and (ball.ycor()<paddle_a.ycor()+paddle_offset and ball.ycor()>paddle_a.ycor()-paddle_offset):
-        ball.setx(-330)
+        ball.setx(-350)
         ball.dx=-ball.dx
         winsound.PlaySound("bounce.wav",winsound.SND_ASYNC)

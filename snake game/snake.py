@@ -2,6 +2,7 @@ import pygame, random
 import tkinter as tk
 from tkinter import messagebox
 from sys import exit
+import os
 
 pygame.init()
 pygame.mixer.init()
@@ -172,9 +173,14 @@ def refreshGame(surface):
 def main():
     global snack
     game = pygame.display.set_mode((side_length,side_length))
+    pygame.display.set_caption("Snake Game")
     
     clock = pygame.time.Clock()
-    bite = pygame.mixer.Sound('snake game/bite.ogg')
+    sound_file = 'bite.ogg'
+    file_path = os.getcwd()
+    if 'snake game' not in file_path:
+        file_path += '\snake game'
+    bite = pygame.mixer.Sound(f"{file_path}\{sound_file}")
     while True:
         pygame.time.delay(50)
         clock.tick(10)
@@ -192,6 +198,5 @@ def main():
                 break
 
         refreshGame(game)
-
 
 main()
