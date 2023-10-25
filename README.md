@@ -25,6 +25,11 @@ Several mini / simple projects created using the Python language.
 
 <img src="images/sudoku_solver_2.png" width="400"></img>
 
+## Tic Tac Toe
+
+<img src="images/tictactoe_1.png" width="500"></img>
+
+<img src="images/tictactoe_2.png" width="500"></img>
 
 
 My github [faris-ai](https://github.com/faris-ai)
