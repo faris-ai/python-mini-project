@@ -6,14 +6,17 @@ Several mini / simple projects created using the Python language.
 
 ### Guess Number
 
-<!-- ![Guess Number Screenshot](https://github.com/faris-ai/python-mini-project/blob/master/images/guess_number.png?raw=true) -->
 <img src="images/guess_number.png" width="500"></img>
-<!-- ![Guess Number Screenshot](images/guess_number.png) -->
 
 ### Pong Game
 
 <img src="images/pong_game.png" width="500"></img>
-<!-- ![Pong Game Screenshot](https://github.com/faris-ai/python-mini-project/blob/master/images/pong_game.png?raw=true) -->
+
+### QR Code Generator
+
+<img src="images/qrcodegen_1.png" width="500"></img>
+
+<img src="images/qrcodegen_2.png" width="500"></img>
 
 ### Snake Game
 

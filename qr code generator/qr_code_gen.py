@@ -1,6 +1,6 @@
 import qrcode
 
-data = input("Input the data: ")
+data = input("Input the data (text/link): ")
 
 img = qrcode.make(data)
 
